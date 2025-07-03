@@ -1,0 +1,18 @@
+# Archivos y carpetas del IDE
+*.iml
+.idea/
+.DS_Store
+
+# Configuración local
+local.properties
+
+# Gradle y compilación
+.gradle/
+build/
+**/build/
+.externalNativeBuild/
+.cxx/
+captures/
+
+# Archivos sensibles
+app/google-services.json
