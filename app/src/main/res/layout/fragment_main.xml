@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/user_name_hint"
             android:inputType="text"
-            android:textColorHint="@color/hour_daxte_color" />
+            android:textColorHint="@color/secondary_color" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
