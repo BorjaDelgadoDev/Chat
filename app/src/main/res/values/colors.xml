@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="primary_color">#3B57BE</color>
+    <color name="secondary_color">#ea5e89</color>
+
+    <color name="dark_blue_purple">#3c51a0</color>
+    <color name="medium_blue">#3b77be</color>
+    <color name="light_blue_cyan">#44a3d6</color>
+    <color name="teal_greenish_blue">#4fc0ca</color>
+    <color name="orange">#f48b3b</color>
+    <color name="light_orange_yellow">#f7b244</color>
+    <color name="pink_magenta">#ea5e89</color>
+
 </resources>
