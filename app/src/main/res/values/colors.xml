@@ -3,6 +3,8 @@
 
     <color name="primary_color">#3B57BE</color>
     <color name="secondary_color">#ea5e89</color>
+    // color mensajes
+    <color name="message_me_color">#F2F2F2</color>
 
     <color name="dark_blue_purple">#3c51a0</color>
     <color name="medium_blue">#3b77be</color>
@@ -11,5 +13,7 @@
     <color name="orange">#f48b3b</color>
     <color name="light_orange_yellow">#f7b244</color>
     <color name="pink_magenta">#ea5e89</color>
+    // gris claro
+    <color name="light_gray">#858585</color>
 
 </resources>
