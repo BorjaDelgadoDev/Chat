@@ -5,12 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.borjadelgadodev.chat.R
 import com.borjadelgadodev.chat.databinding.FragmentChatBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.getValue
 
+@AndroidEntryPoint
 class ChatFragment : Fragment() {
 
+    private val viewModel: ChatViewModel by viewModels()
     private lateinit var binding: FragmentChatBinding
 
     override fun onCreateView(
@@ -21,6 +26,11 @@ class ChatFragment : Fragment() {
         binding.imageViewBack.setOnClickListener {
             navigateToMain()
         }
+
+        binding.buttonSendMessage.setOnClickListener {
+            viewModel.sendMessage()
+        }
+
         return binding.root
     }
 
