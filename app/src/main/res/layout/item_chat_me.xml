@@ -39,7 +39,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/text_view_hour"
+        android:id="@+id/text_view_hour_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/light_gray"

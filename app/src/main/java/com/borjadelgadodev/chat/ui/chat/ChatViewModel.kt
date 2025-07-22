@@ -10,6 +10,7 @@ import com.borjadelgadodev.chat.domain.model.MessageModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -22,14 +23,15 @@ class ChatViewModel @Inject constructor(
         getMessages()
     }
 
-    var messageListResponse = MutableStateFlow<List<MessageModel>>(emptyList())
+    private var _messageListResponse = MutableStateFlow<List<MessageModel>>(emptyList())
+    val messageListResponse: StateFlow<List<MessageModel>> = _messageListResponse
 
     private fun getMessages() {
         viewModelScope.launch {
             val result = getMessagesUseCase()
             result.collect { messages ->
                 Log.d("ChatViewModel", "Messages received: $messages")
-                messageListResponse.value = messages
+                _messageListResponse.value = messages
             }
         }
     }

@@ -15,7 +15,7 @@ data class MessageResponse(
             message = message.orEmpty(),
             hour = hour.orEmpty(),
             date = date.orEmpty(),
-            userModel = UserModel(
+            user = UserModel(
                 userName = user?.userName ?: "Unknown User",
                 admin = user?.admin ?: false
             )
@@ -27,4 +27,3 @@ data class UserResponse(
     val userName: String? = null,
     val admin: Boolean? = null,
 )
-

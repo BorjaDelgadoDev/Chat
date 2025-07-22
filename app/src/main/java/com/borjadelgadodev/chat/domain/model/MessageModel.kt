@@ -4,7 +4,7 @@ data class MessageModel (
     val message: String,
     val hour: String,
     val date: String,
-    val userModel: UserModel
+    val user: UserModel
 )
 
 data class UserModel(
