@@ -14,4 +14,5 @@
     <string name="hour_example">12:00</string>
     <string name="date_example">9 de diciembre</string>
     <string name="example_message">This is my message</string>
+    <string name="error_empty_username">El nombre de usuario no puede estar vacío</string>
 </resources>

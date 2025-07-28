@@ -18,6 +18,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
+    private val viewModel: MainViewModel by viewModels()
+    var userName: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +27,14 @@ class MainFragment : Fragment() {
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.buttonStartChat.setOnClickListener {
-            if (binding.inputTextUserName.text.isNullOrEmpty().not()) {
-                navigateToChat()
+            userName = binding.inputTextUserName.text.toString()
+            userName?.let { userName ->
+                if (userName.isNotEmpty()) {
+                    viewModel.saveNickName(userName)
+                    navigateToChat()
+                } else {
+                    binding.inputTextUserName.error = getString(R.string.error_empty_username)
+                }
             }
         }
         return binding.root
