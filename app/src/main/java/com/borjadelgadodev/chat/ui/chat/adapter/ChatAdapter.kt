@@ -9,7 +9,7 @@ import com.borjadelgadodev.chat.domain.model.MessageModel
 
 class ChatAdapter(
     private var messageList: MutableList<MessageModel>,
-    private val userName: String
+    private var userName: String = ""
 ) : RecyclerView.Adapter<ChatViewHolder>() {
 
     companion object {
@@ -17,7 +17,8 @@ class ChatAdapter(
         const val RECEIVED_MESSAGE = 1
     }
 
-    fun updateList(messages: MutableList<MessageModel>) {
+    fun updateList(messages: MutableList<MessageModel>, name: String) {
+        userName = name
         messageList.clear()
         messageList.addAll(messages)
         notifyItemInserted(messageList.size - 1)

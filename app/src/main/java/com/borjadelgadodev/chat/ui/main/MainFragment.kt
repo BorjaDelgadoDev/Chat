@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.borjadelgadodev.chat.databinding.FragmentMainBinding
 import com.borjadelgadodev.chat.R
 import com.borjadelgadodev.chat.ui.chat.ChatViewModel
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -37,7 +39,22 @@ class MainFragment : Fragment() {
                 }
             }
         }
+
+        subscribeToViewState()
+
         return binding.root
+    }
+
+    private fun subscribeToViewState() {
+       lifecycleScope.launch {
+           viewModel.viewState.collect { state ->
+               when(state) {
+                   MainViewState.LOADING -> { binding.progressIndicator.visibility = View.VISIBLE }
+                   MainViewState.REGISTERED -> navigateToChat()
+                   MainViewState.UNREGISTERED -> {binding.progressIndicator.visibility = View.GONE}
+               }
+           }
+       }
     }
 
     private fun navigateToChat() {

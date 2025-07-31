@@ -9,12 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.borjadelgadodev.chat.R
 import com.borjadelgadodev.chat.databinding.FragmentChatBinding
 import com.borjadelgadodev.chat.ui.chat.adapter.ChatAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import kotlin.getValue
 
 @AndroidEntryPoint
 class ChatFragment : Fragment() {
@@ -29,13 +27,19 @@ class ChatFragment : Fragment() {
     ): View {
         binding = FragmentChatBinding.inflate(inflater, container, false)
         binding.imageViewBack.setOnClickListener {
-            navigateToMain()
+            viewModel.logout { navigateToMain() }
         }
 
         initUI()
 
         binding.buttonSendMessage.setOnClickListener {
-            viewModel.sendMessage()
+            val message = binding.editTextMessage.text.toString()
+            message.let {
+                if (it.isNotBlank()) {
+                    viewModel.sendMessage(it, viewModel.userNameFlow.value)
+                    binding.editTextMessage.text?.clear()
+                }
+            }
         }
 
         return binding.root
@@ -44,13 +48,16 @@ class ChatFragment : Fragment() {
     private fun initUI() {
         initMessages()
         observeViewModel()
+        setUpToolbar()
+    }
+
+
+    private fun setUpToolbar() {
+        binding.textViewTitle.text = viewModel.userNameFlow.value
     }
 
     private fun initMessages() {
-        chatAdapter = ChatAdapter(
-            messageList = mutableListOf(),
-            userName = "borja"
-        )
+        chatAdapter = ChatAdapter(messageList = mutableListOf())
         binding.recyclerViewMessages.apply {
             adapter = chatAdapter
             layoutManager = LinearLayoutManager(context)
@@ -60,8 +67,15 @@ class ChatFragment : Fragment() {
     private fun observeViewModel() {
         lifecycleScope.launch {
             viewModel.messageListResponse.collect { messages ->
-                chatAdapter.updateList(messages.toMutableList())
+                chatAdapter.updateList(messages.toMutableList(), viewModel.userNameFlow.value)
                 binding.recyclerViewMessages.scrollToPosition(messages.size - 1)
+                setUpToolbar()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.userNameFlow.collect { name ->
+                binding.textViewTitle.text = name
             }
         }
     }
