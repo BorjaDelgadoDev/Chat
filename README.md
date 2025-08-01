@@ -1,20 +1,12 @@
-# Chat App
+# 📱 Chat – Aplicación de Mensajería Android con Firebase
 
-Memory Notes es una aplicación de notas intuitiva y eficiente desarrollada en Kotlin para Android. Utiliza la arquitectura MVVM y Room para la gestión de la base de datos.
- 
-## 📑 Tabla de Contenidos
+¡Bienvenido al repositorio de **Chat**!  
+Esta aplicación ha sido desarrollada como proyecto del _**Curso de Firebase para Android con Kotlin**_ de **AristiDevs**, centrado en el desarrollo moderno de aplicaciones Android con integración de **Google Firebase**.
 
-1. [Características](#-características)
-2. [Capturas de Pantalla](#-capturas-de-pantalla)
-3. [Requisitos](#-requisitos)
-4. [Instalación](#-instalación)
-5. [Uso](#-uso)
-6. [Estructura del Proyecto](#-estructura-del-proyecto)
+El propósito de esta app es aprender de forma práctica cómo construir una aplicación de chat en tiempo real utilizando Firebase y Kotlin, aplicando buenas prácticas y principios del desarrollo Android.
+Tecnologías utilizadas: **MVVM**, **Dagger**, **Kotlin Coroutines**, **Preferences**
+---
 
-## ✨ Características
+## 🙌 Soporte y agradecimientos
 
-- Crear, editar y eliminar notas fácilmente.
-- Interfaz de usuario moderna y limpia.
-- Sincronización automática de notas.
-- Navegación intuitiva entre pantallas.
-- Integración con Room para almacenamiento local.
+🧑🏫 Este proyecto fue realizado siguiendo el **Curso de Firebase para Android con Kotlin** de [AristiDevs]([https://aristi.dev](https://www.appcademy.dev/view/courses/firebase-para-android-con-kotlin-curso-definitivo-desde-0))
